@@ -1,0 +1,7 @@
+	insert into departments (name, address) values
+		('test','5 floor'),
+		('adm','5 floor'),
+		('qa','5 floor'),
+		('rnd','3 floor'),
+		('it','1 floor'),
+		('devops','2 floor')
