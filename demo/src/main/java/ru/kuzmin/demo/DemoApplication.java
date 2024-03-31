@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.data.domain.Sort;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +19,7 @@ public class DemoApplication {
         ApplicationContext ctx = SpringApplication.run(DemoApplication.class, args);
         MyRepo mr = ctx.getBean(MyRepo.class);
         //записать новую запись в БД
-        mr.save(new Department(null, "Dev", "2 floor"));
+        mr.save(new Department( "Dev", "2 floor"));
 
         //...scripts in pga
 
@@ -54,10 +55,16 @@ public class DemoApplication {
         System.out.println("\n\n");
         ls.forEach(System.out::println);
 
-//		int res = mr.updateDepartmentsSetNameForIdNative("Dev Ops", 7);
-//        ls = mr.findAll(Sort.by(Sort.Order.asc("name")));
-//        System.out.println("\n\n");
-//        ls.forEach(System.out::println);
+        HashSet<Employee> group1 = new HashSet();
+        group1.add(new Employee("Rita"));
+        group1.add(new Employee("Vika"));
+        group1.add(new Employee("Mark"));
+        group1.add(new Employee("Alex"));
+
+        ls.get(1).empls = new HashSet<>();
+        ls.get(1).empls.addAll(group1);
+        mr.saveAll(ls);
+
     }
 
 }
