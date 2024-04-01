@@ -34,27 +34,27 @@ public class DemoApplication {
         List<Department> ls = mr.findAll(Sort.by(Sort.Order.asc("name")));
         System.out.println("\n\n");
         ls.forEach(System.out::println);
-        //изменим коллекцию
+//        //изменим коллекцию
         ls.forEach(dep->{dep.setName("DEPARTMENT: "+dep.getName());});
-        //записать коллекцию в БД
+//        //записать коллекцию в БД
         mr.saveAll(ls);
-        //получить все записи
+//        //получить все записи
         ls = mr.findAll(Sort.by(Sort.Order.asc("name")));
         System.out.println("\n\n");
         ls.forEach(System.out::println);
-
-        //добавим новую запись через нативный SQL
+//
+//        //добавим новую запись через нативный SQL
         int res = mr.insertDepartment("HR", "floor 8");
         ls = mr.findAll(Sort.by(Sort.Order.asc("name")));
         System.out.println("\n\n");
         ls.forEach(System.out::println);
-
-        //обновим запись через нативный SQL
-        res = mr.updateDepartmentsSetNameForIdNative("HR is the best", 2);
+//
+//        //обновим запись через нативный SQL
+        res = mr.updateDepartmentsSetNameForIdNative("HR is the best", 3);
         ls = mr.findAll(Sort.by(Sort.Order.asc("name")));
         System.out.println("\n\n");
         ls.forEach(System.out::println);
-
+//
         HashSet<Employee> group1 = new HashSet();
         group1.add(new Employee("Rita"));
         group1.add(new Employee("Vika"));
